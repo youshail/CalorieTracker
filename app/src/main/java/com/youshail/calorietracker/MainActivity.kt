@@ -6,7 +6,7 @@ import androidx.activity.compose.setContent
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.youshail.calorietracker.ui.navigation.navigate
+import com.youshail.calorietracker.navigation.navigate
 
 import com.youshail.calorietracker.ui.theme.CaloryTrackerTheme
 import com.youshail.core.navigation.Route

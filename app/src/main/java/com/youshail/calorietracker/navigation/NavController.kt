@@ -1,4 +1,4 @@
-package com.youshail.calorietracker.ui.navigation
+package com.youshail.calorietracker.navigation
 
 import androidx.navigation.NavController
 import com.youshail.core.util.UiEvent

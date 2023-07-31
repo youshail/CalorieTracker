@@ -1,4 +1,4 @@
-package com.youshail.onboarding_presentation.age
+package com.youshail.onboarding_presentation.weight
 
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -7,7 +7,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.youshail.core.R
 import com.youshail.core.domain.preferences.Preferences
-import com.youshail.core.domain.use_case.FilterOutDigits
 import com.youshail.core.navigation.Route
 import com.youshail.core.util.UiEvent
 import com.youshail.core.util.UiText
@@ -19,39 +18,36 @@ import javax.inject.Inject
 
 
 @HiltViewModel
-class AgeViewModel @Inject constructor(
+class WeightViewModel @Inject constructor(
     private val preferences: Preferences,
-    private val filterOutDigits: FilterOutDigits
-) : ViewModel() {
 
-    var age by mutableStateOf("20")
-        private set
+) : ViewModel(){
+
+    var weight by mutableStateOf("70.5")
 
     private val _uiEvent = Channel<UiEvent>()
     val uiEvent = _uiEvent.receiveAsFlow()
 
-    fun onAgeEnter(age: String) {
-        if (age.length <= 3) {
-            this.age = filterOutDigits(age)
+    fun onWeightEnter(weight: String){
+        if (weight.length <5){
+            this.weight = weight
         }
     }
 
-    fun onNextClick() {
+    fun onNextClick(){
         viewModelScope.launch {
-            val ageNumber = age.toIntOrNull() ?: kotlin.run {
+            val weightNumber = weight.toFloatOrNull() ?: kotlin.run {
                 _uiEvent.send(
                     UiEvent.ShowSnackBar(
                         UiText.StringResource(
-                            R.string.error_age_cant_be_empty
+                            R.string.error_weight_cant_be_empty
                         )
                     )
                 )
                 return@launch
             }
-            preferences.saveAge(ageNumber)
-            _uiEvent.send(
-                UiEvent.Navigate(Route.HEIGHT)
-            )
+            preferences.saveWeight(weightNumber)
+            _uiEvent.send(UiEvent.Navigate(Route.ACTIVITY))
         }
     }
 }

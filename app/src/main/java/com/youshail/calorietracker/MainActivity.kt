@@ -15,8 +15,10 @@ import com.youshail.calorietracker.navigation.navigate
 
 import com.youshail.calorietracker.ui.theme.CaloryTrackerTheme
 import com.youshail.core.navigation.Route
+import com.youshail.onboarding_presentation.activity.ActivityScreen
 import com.youshail.onboarding_presentation.age.AgeScreen
 import com.youshail.onboarding_presentation.gender.GenderScreen
+import com.youshail.onboarding_presentation.goal.GoaScreen
 import com.youshail.onboarding_presentation.height.HeightScreen
 import com.youshail.onboarding_presentation.weight.WeightScreen
 import com.youshail.onboarding_presentation.welcome.WelcomeScreen
@@ -66,18 +68,24 @@ class MainActivity : ComponentActivity() {
                                 onNavigate = navController::navigate
                             )
                         }
+                        composable(Route.ACTIVITY){
+                            ActivityScreen(onNavigate = navController::navigate)
+                        }
+
+                        composable(Route.GOAL){
+                            GoaScreen(onNavigate = navController::navigate)
+                        }
+
                         composable(Route.NUTRIENT_GOAL){
 
                         }
-                        composable(Route.ACTIVITY){
 
-                        }
-                        composable(Route.GOAL){
 
-                        }
+
                         composable(Route.TRACKER_OVERVIEW){
 
                         }
+
                         composable(Route.SEARCH){
 
                         }

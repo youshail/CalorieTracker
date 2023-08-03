@@ -2,6 +2,7 @@ package com.youshail.tracker_domain.repository
 
 import com.youshail.tracker_domain.model.TrackableFood
 import com.youshail.tracker_domain.model.TrackedFood
+import com.youshail.tracker_domain.use_case.TrackFood
 import kotlinx.coroutines.flow.Flow
 import java.time.LocalDate
 
@@ -15,7 +16,7 @@ interface TrackerRepository {
 
     suspend fun insertTrackedFood(food: TrackedFood)
 
-    suspend fun deleteTrackedFood(food: TrackedFood)
+    suspend fun deleteTrackedFood(food: TrackFood)
 
     fun getFoodsForDate(localDate: LocalDate): Flow<List<TrackedFood>>
 }

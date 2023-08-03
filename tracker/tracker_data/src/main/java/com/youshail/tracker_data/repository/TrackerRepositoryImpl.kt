@@ -8,6 +8,7 @@ import com.youshail.tracker_data.remote.OpenFoodApi
 import com.youshail.tracker_domain.model.TrackableFood
 import com.youshail.tracker_domain.model.TrackedFood
 import com.youshail.tracker_domain.repository.TrackerRepository
+import com.youshail.tracker_domain.use_case.TrackFood
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import java.time.LocalDate
@@ -41,7 +42,7 @@ class TrackerRepositoryImpl(
         dao.insertTrackerFood(food.toTrackedFoodEntity())
     }
 
-    override suspend fun deleteTrackedFood(food: TrackedFood) {
+    override suspend fun deleteTrackedFood(food: TrackFood) {
         dao.deleteTrackerFood(food.toTrackedFoodEntity())
     }
 

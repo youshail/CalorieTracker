@@ -3,7 +3,7 @@ package com.youshail.calorietracker.di
 import android.app.Application
 import android.content.Context.MODE_PRIVATE
 import android.content.SharedPreferences
-import com.youshail.core.domain.PreferencesImp
+import com.youshail.core.data.preferences.PreferencesImp
 import com.youshail.core.domain.preferences.Preferences
 import com.youshail.core.domain.use_case.FilterOutDigits
 import dagger.Module

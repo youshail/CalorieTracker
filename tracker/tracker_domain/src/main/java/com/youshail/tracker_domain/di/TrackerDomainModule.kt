@@ -18,7 +18,7 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(ViewModelComponent::class)
-class TrackerDomainModule {
+object TrackerDomainModule {
 
     @ViewModelScoped
     @Provides

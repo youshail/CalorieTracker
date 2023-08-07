@@ -1,4 +1,4 @@
-package com.youshail.calorietracker.ui.theme
+package com.youshail.core_ui
 
 import androidx.compose.ui.graphics.Color
 

@@ -41,12 +41,14 @@ class TrackerOverviewViewModel @Inject constructor(
         when (event) {
             is TrackerOverviewEvent.OnAddFoodClick -> {
                 viewModelScope.launch {
-                    UiEvent.Navigate(
-                        route = Route.SEARCH
-                                + "/${event.meal.mealType.name}"
-                                + "/${state.date.dayOfMonth}"
-                                + "/${state.date.monthValue}"
-                                + "/${state.date.year}"
+                    _uiEvent.send(
+                        UiEvent.Navigate(
+                            route = Route.SEARCH
+                                    + "/${event.meal.mealType.name}"
+                                    + "/${state.date.dayOfMonth}"
+                                    + "/${state.date.monthValue}"
+                                    + "/${state.date.year}"
+                        )
                     )
                 }
             }

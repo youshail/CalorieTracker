@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
@@ -29,21 +30,31 @@ import com.youshail.tracker_presentation.tracker_overview.components.TrackedFood
 fun TrackerOverviewScreen(
     onNavigate: (UiEvent.Navigate) -> Unit,
     viewModel: TrackerOverviewViewModel = hiltViewModel()
-){
+) {
     val spacing = LocalSpacing.current
     val state = viewModel.state
     val context = LocalContext.current
-    
-    LazyColumn(modifier = Modifier
-        .fillMaxSize()
-        .padding(bottom = spacing.spaceSmall)){
-        item { 
+    LaunchedEffect(key1 = context) {
+        viewModel.uiEvent.collect { event ->
+            when(event) {
+                is UiEvent.Navigate -> onNavigate(event)
+                else -> Unit
+            }
+        }
+    }
+
+    LazyColumn(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(bottom = spacing.spaceSmall)
+    ) {
+        item {
             NutrientsHeader(state = state)
             Spacer(modifier = Modifier.height(spacing.spaceMedium))
             DaySelector(
                 date = state.date,
                 onPreviousDayClick = {
-                                     viewModel.onEvent(TrackerOverviewEvent.OnPreviousDayClick)
+                    viewModel.onEvent(TrackerOverviewEvent.OnPreviousDayClick)
                 },
                 onNextDayClick = {
                     viewModel.onEvent(TrackerOverviewEvent.OnNextDayClick)

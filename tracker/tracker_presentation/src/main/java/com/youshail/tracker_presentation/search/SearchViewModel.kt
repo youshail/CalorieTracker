@@ -74,6 +74,7 @@ class SearchViewModel @Inject constructor(
                 mealType = event.mealType,
                 date = event.date
             )
+            _uiEvent.send(UiEvent.NavigateUp)
         }
     }
 

@@ -7,7 +7,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.youshail.core.domain.preferences.Preferences
 import com.youshail.core.domain.use_case.FilterOutDigits
-import com.youshail.core.navigation.Route
 import com.youshail.core.util.UiEvent
 import com.youshail.onboarding_domain.use_case.ValidateNutrients
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -70,7 +69,7 @@ class NutrientGoalViewModel @Inject constructor(
 
                         viewModelScope.launch {
                             _uiEvent.send(
-                                UiEvent.Navigate(Route.TRACKER_OVERVIEW)
+                                UiEvent.Success
                             )
                         }
                     }

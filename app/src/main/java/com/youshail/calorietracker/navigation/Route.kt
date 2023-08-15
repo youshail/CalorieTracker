@@ -1,4 +1,4 @@
-package com.youshail.core.navigation
+package com.youshail.calorietracker.navigation
 
 object Route {
 

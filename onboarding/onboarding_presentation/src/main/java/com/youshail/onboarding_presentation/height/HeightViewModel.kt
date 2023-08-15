@@ -8,7 +8,6 @@ import androidx.lifecycle.viewModelScope
 import com.youshail.core.R
 import com.youshail.core.domain.preferences.Preferences
 import com.youshail.core.domain.use_case.FilterOutDigits
-import com.youshail.core.navigation.Route
 import com.youshail.core.util.UiEvent
 import com.youshail.core.util.UiText
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -51,7 +50,7 @@ class HeightViewModel @Inject constructor(
             }
             preferences.saveHeight(heightNumber)
             _uiEvent.send(
-                UiEvent.Navigate(Route.WEIGHT )
+                UiEvent.Success
             )
         }
     }

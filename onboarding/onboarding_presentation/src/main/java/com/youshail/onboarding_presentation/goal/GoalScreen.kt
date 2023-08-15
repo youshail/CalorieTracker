@@ -20,7 +20,6 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.youshail.core.R
-import com.youshail.core.domain.model.ActivityLevel
 import com.youshail.core.domain.model.GoalType
 import com.youshail.core.util.UiEvent
 import com.youshail.core_ui.LocalSpacing
@@ -29,14 +28,14 @@ import com.youshail.onboarding_presentation.components.SelectableButton
 
 @Composable
 fun GoaScreen(
-    onNavigate: (UiEvent.Navigate) -> Unit,
+    onNextClick: () -> Unit,
     viewModel: GoalViewModel = hiltViewModel()
 ){
     val spacing = LocalSpacing.current
     LaunchedEffect(key1 = true) {
         viewModel.uiEvent.collect { event ->
             when (event) {
-                is UiEvent.Navigate -> onNavigate(event)
+                is UiEvent.Success -> onNextClick()
                 else -> Unit
             }
         }

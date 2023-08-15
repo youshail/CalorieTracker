@@ -38,6 +38,7 @@ class CalculateMealNutrients(
         val proteinGoal = (caloryGoal * userInfo.proteinRatio / 4f).roundToInt()
         val fatGoal = (caloryGoal * userInfo.fatRatio / 9f).roundToInt()
 
+
         return Result(
             caloriesGoal = caloryGoal,
             carbsGoal = carbsGoal,

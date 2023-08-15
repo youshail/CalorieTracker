@@ -66,7 +66,7 @@ fun SearchTextField(
                 .fillMaxWidth()
                 .padding(spacing.spaceMedium)
                 .padding(end = spacing.spaceMedium)
-                .onFocusChanged { onFocusChanged }
+                .onFocusChanged { onFocusChanged(it) }
         )
         if (shouldShowHint){
             Text(

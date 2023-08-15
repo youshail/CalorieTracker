@@ -95,6 +95,7 @@ fun TrackableFoodItem(
                         .size(100.dp)
                         .clip(RoundedCornerShape(topStart = 5.dp))
                 )
+                Spacer(modifier = Modifier.width(spacing.spaceMedium))
                 Column(
                     modifier = Modifier.align(CenterVertically)
                 ) {
